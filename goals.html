@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>List</title>
+  <link
+          href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+          rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/vue@next" defer></script>
+  <script src="goals.js" defer></script>
+</head>
+<body>
+<header>
+  <h1>Vue Course Goals</h1>
+</header>
+<section id="user-goals">
+  <h2>My course goals</h2>
+  <input  v-model="inputTask" type="text" />
+  <button @click="addTask">Add Goal</button>
+  <p v-if="goals.length === 0 ">No goals have been added yet - please start adding some!</p>
+  <ul v-if="visibility">
+    <li v-for="goal in goals " :key="goal" @click='removeTask(key)'>{{ goal }} </li>
+  </ul>
+  <button v-if='goals.length != 0 ' @click="toggleList">{{ buttonCaption }} List</button>
+</section>
+</body>
+</html>
